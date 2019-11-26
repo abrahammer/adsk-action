@@ -1,12 +1,17 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'ADSK Deploy Action'
+description: 'Dummy custom action that calls runs docker container with inputs'
+author: 'abrahammer'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  service_id:
+    description: 'service to deploy'
+    required: true
+    default: 'ACME'
+  version:
+    description: 'version to deploy'
+    default: 'latest'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.service_id }}
+    - ${{ inputs.version }}
